@@ -55,16 +55,17 @@ responds in kind.
 | `pm-operator` | Launch, crisis response, incident retros |
 | `pm-coach` | PM interview prep, career, skill diagnosis |
 
-### 8 Scenarios (the situation you are in)
+### 9 Scenarios (the situation you are in)
 
 - `launch-week` — strategist → writer → communicator → operator
 - `discovery-sprint` — researcher → strategist → analyst
 - `growth-pause` — analyst → researcher → strategist
 - `quarterly-cycle` — strategist → analyst → communicator
-- `crisis-mode` — operator → communicator → critic
+- `crisis-mode` — operator ∥ communicator → critic (then retro post-crisis)
 - `interview-season` — coach → writer → critic
 - `new-role-onboarding` — writer → communicator → strategist
 - `board-prep` — strategist → analyst → writer → communicator
+- `competitive-intelligence` — strategist × 3 (market / features / positioning) → critic
 
 ### 4 Tools (utilities used across roles)
 
