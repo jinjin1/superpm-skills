@@ -1,53 +1,55 @@
-# {주제} — 1-Pager
+# {subject} — 1-Pager
 
-> To: {읽는 사람 — 임원 이름/역할}
-> From: {@작성자}
+> To: {reader — exec name / role}
+> From: {@author}
 > Date: {YYYY-MM-DD}
-> Decision needed by: {기한}
+> Decision needed by: {deadline}
 
-**요청**: {한 문장. "X를 Y까지 승인해주세요" 또는 "X에 대한 방향 결정이 필요합니다".}
+**Ask:** {one sentence. "Approve X by Y" or "Decide direction on X".}
 
 ## TL;DR
 
-- {핵심 제안}
-- {핵심 근거 (숫자 1개 포함)}
-- {요청 결정}
+- {the proposal}
+- {the evidence, with one number}
+- {the decision requested}
 
-## 왜 이게 중요한가 (의사결정자 의제 연결)
+## Why this matters (connect to the decision-maker's agenda)
 
-{한 단락: 이 결정이 의사결정자의 {상반기 과제 / OKR / 전략 우선순위}와 어떻게
-연결되는가. B2B라면 "우리 고객의 의사결정자 의제"도 추가.}
+{One paragraph: how this decision connects to the decision-maker's
+{half-year priority / OKR / strategic focus}. For B2B, also name "our
+customer's decision-maker's agenda".}
 
-## 배경 (2~3줄)
+## Background (2–3 lines)
 
-{현재 상황. 왜 지금 결정이 필요한가.}
+{Current situation. Why a decision is needed now.}
 
-## 옵션 비교
+## Options compared
 
-| 옵션 | 요약 | 효과 | 비용/리스크 | 타임라인 |
+| Option | Summary | Impact | Cost / risk | Timeline |
 |---|---|---|---|---|
-| **A (추천)** | {한 줄} | {숫자 기반} | {한 줄} | {기간} |
-| B | {한 줄} | {숫자 기반} | {한 줄} | {기간} |
-| C (현상 유지) | {한 줄} | {숫자 기반} | {한 줄} | — |
+| **A (recommended)** | {one line} | {number-backed} | {one line} | {duration} |
+| B | {one line} | {number-backed} | {one line} | {duration} |
+| C (status quo) | {one line} | {number-backed} | {one line} | — |
 
-## 추천 (Option A)
+## Recommendation (Option A)
 
-{왜 A인가. 3~4줄. 반대 의견도 1줄 언급하고 왜 A가 이기는지.}
+{Why A. Three or four lines. Mention the strongest counter-argument and
+why A still wins.}
 
-## 리스크 & 완화
+## Risks and mitigations
 
-- **리스크 1**: {무엇} → **완화**: {어떻게}
-- **리스크 2**: {무엇} → **완화**: {어떻게}
+- **Risk 1:** {what} → **mitigation:** {how}
+- **Risk 2:** {what} → **mitigation:** {how}
 
-## 다음 스텝
+## Next steps
 
-| 액션 | 담당 | 기한 |
+| Action | Owner | Deadline |
 |---|---|---|
-| {결정 승인} | {의사결정자} | {기한} |
-| {킥오프} | {@담당} | {기한} |
-| {후속 1} | {@담당} | {기한} |
+| {approve decision} | {decision-maker} | {deadline} |
+| {kickoff} | {@owner} | {deadline} |
+| {follow-up 1} | {@owner} | {deadline} |
 
 ---
 
-**1페이지 초과 금지.** 넘으면 "부록: {주제}"를 별도 문서로 분리.
-부록 링크: [{부록 제목}]({링크})
+**Do not exceed one page.** If you overflow, split off an appendix as a
+separate doc and link it: [{appendix title}]({link})

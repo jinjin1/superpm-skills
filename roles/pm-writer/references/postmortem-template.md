@@ -1,97 +1,100 @@
-# Postmortem — {장애/사건 제목}
+# Postmortem — {incident title}
 
 > Status: {Draft | Reviewed | Published}
 > Severity: {P0 | P1 | P2 | P3}
-> Duration: {MM:SS ~ MM:SS, 총 X분}
-> Owner: {@담당}
+> Duration: {MM:SS – MM:SS, total X minutes}
+> Owner: {@owner}
 > Incident commander: {@IC}
 
 ## TL;DR
 
-- {무엇이 일어났나 — 1줄}
-- {누구에게 영향 — 숫자로}
-- {근본 원인 1문장 + 재발 방지 조치}
+- {what happened — one line}
+- {who was affected — with numbers}
+- {root cause in one sentence + the key prevention action}
 
-**Blameless 원칙**: 이 문서는 개인·팀을 비난하지 않습니다. 시스템·프로세스의
-교정을 목적으로 합니다.
+**Blameless principle:** this document does not blame individuals or teams.
+Its purpose is to correct systems and processes.
 
 ## Impact
 
-- **영향 범위**: {몇 명 / 몇 % 유저 / 어떤 플로우}
-- **지속 시간**: {시작 ~ 복구}
-- **매출 영향**: {추정치 또는 "확인 중"}
-- **평판 영향**: {SNS·고객 지원 티켓 건수}
-- **규정/법적 이슈**: {있음/없음 + 상세}
+- **Scope:** {how many / what % of users / which flows}
+- **Duration:** {start to recovery}
+- **Revenue impact:** {estimate, or "under investigation"}
+- **Reputational impact:** {social mentions, support tickets}
+- **Regulatory / legal:** {present / absent, with detail}
 
-## Timeline (KST 기준)
+## Timeline (in one timezone, state it)
 
-| 시각 | 이벤트 | 행동 | 담당 |
+| Time | Event | Action taken | Owner |
 |---|---|---|---|
-| HH:MM | {최초 증상 발견} | {확인/에스컬레이션} | {@사람} |
-| HH:MM | {1차 대응 시도} | {결과} | {@사람} |
-| HH:MM | {근본 원인 특정} | {조치} | {@사람} |
-| HH:MM | {복구 완료} | {검증} | {@사람} |
-| HH:MM | {공지 완료} | {채널} | {@사람} |
+| HH:MM | {first symptom detected} | {triaged / escalated} | {@person} |
+| HH:MM | {first mitigation tried} | {result} | {@person} |
+| HH:MM | {root cause identified} | {action} | {@person} |
+| HH:MM | {recovery complete} | {verification} | {@person} |
+| HH:MM | {communication completed} | {channel} | {@person} |
 
-## Root Cause (5 Whys)
+## Root cause (5 Whys)
 
-**증상**: {무엇이 보였나}
+**Symptom:** {what was observed}
 
-1. **왜?** {1차 원인}
-2. **왜?** {2차 원인}
-3. **왜?** {3차 원인}
-4. **왜?** {4차 원인}
-5. **왜?** {근본 원인}
+1. **Why?** {first-level cause}
+2. **Why?** {second-level cause}
+3. **Why?** {third-level cause}
+4. **Why?** {fourth-level cause}
+5. **Why?** {root cause}
 
-**근본 원인 정리**: {1~2문장으로}
+**Root cause (summary):** {one or two sentences}
 
 ## What went right
 
-- {잘 작동한 대응 1}
-- {잘 작동한 대응 2}
-- {잘 작동한 모니터링/알람}
+- {mitigation that worked 1}
+- {mitigation that worked 2}
+- {monitoring / alert that fired correctly}
 
-Blameless 원칙: 비난 없이, 하지만 **잘된 것도 명확히 기록**.
+Blameless principle: call out the good, clearly.
 
 ## What went wrong
 
-- {놓친 지표/알람}
-- {느렸던 에스컬레이션}
-- {명확하지 않았던 런북}
+- {missed indicator / alarm}
+- {slow escalation}
+- {runbook that was unclear}
 
-## Action Items
+## Action items
 
-> 모든 항목에 담당자 + 기한. 미배정 AI는 "미배정" → 회의에서 할당.
+> Every item has an owner and a deadline. Unassigned = "unassigned", to be
+> assigned in the follow-up meeting.
 
-| 우선순위 | 액션 | 담당 | 기한 | 상태 |
+| Priority | Action | Owner | Deadline | Status |
 |---|---|---|---|---|
-| P0 | {재발 방지 핵심 액션} | {@담당} | {YYYY-MM-DD} | Open |
-| P1 | {모니터링 보강} | {@담당} | {YYYY-MM-DD} | Open |
-| P2 | {런북 업데이트} | {@담당} | {YYYY-MM-DD} | Open |
+| P0 | {critical prevention} | {@owner} | {YYYY-MM-DD} | Open |
+| P1 | {monitoring improvement} | {@owner} | {YYYY-MM-DD} | Open |
+| P2 | {runbook update} | {@owner} | {YYYY-MM-DD} | Open |
 
-## Lessons Learned
+## Lessons learned
 
-- {조직·프로세스 수준의 교훈 1}
-- {조직·프로세스 수준의 교훈 2}
-- {기술·아키텍처 수준의 교훈}
+- {organizational / process lesson 1}
+- {organizational / process lesson 2}
+- {technical / architectural lesson}
 
-## Customer Communication
+## Customer communication
 
-- **최초 공지**: {시각, 채널, 내용 링크}
-- **업데이트**: {시각, 채널, 내용 링크}
-- **복구 완료 공지**: {시각, 채널, 내용 링크}
-- **후속 공지 (필요 시)**: {계획}
+- **Initial notice:** {time, channel, content link}
+- **Update:** {time, channel, content link}
+- **Recovery notice:** {time, channel, content link}
+- **Follow-up notice (if any):** {plan}
 
 ## References
 
-- 관련 모니터링 대시보드: {링크}
-- 관련 PR/커밋: {링크}
-- 유사 과거 사건: {링크}
+- Monitoring dashboards: {link}
+- Related PRs / commits: {link}
+- Prior similar incidents: {link}
 
 ---
 
-**작성 팁**:
-- 타임라인은 **slack·로그·티켓에서 타임스탬프 복사**하여 기록. 기억 의존 금지.
-- Root Cause의 5 Whys는 기계적 의식이 아님. 답이 "개인의 실수"로 끝나면 Why를
-  한 번 더. 항상 시스템 원인으로 귀결되어야 함.
-- Action Items는 구체적·측정 가능하게. "주의한다" "신경 쓴다" 금지.
+**Writing tips:**
+- Build the timeline by copying timestamps from Slack, logs, and tickets. Do
+  not rely on memory.
+- The 5 Whys is not a ritual. If the answer lands on "individual mistake",
+  push one more Why. It must end at a system cause.
+- Action items must be concrete and measurable. No "we'll be careful" or
+  "we'll pay attention."

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # SuperPM Skills installer
-# Copies this repo's Role/Scenario skills into ~/.claude/skills/superpm/
+# Copies this repo's Role and Scenario skills into ~/.claude/skills/superpm/
 # so Claude Code can auto-load them.
 
 set -euo pipefail
@@ -47,7 +47,7 @@ fi
 
 # --- Copy ---
 
-# Use rsync if available (preserves perms cleanly), fall back to cp -R
+# Use rsync if available (preserves perms cleanly); fall back to cp -R
 if command -v rsync >/dev/null 2>&1; then
   rsync -a --exclude='.git' --exclude='node_modules' --exclude='.DS_Store' \
     "${SOURCE}/" "${TARGET}/"
@@ -71,13 +71,14 @@ echo ""
 echo "================================================"
 echo "  SuperPM Skills installed"
 echo "================================================"
-echo "  Location: ${TARGET}"
+echo "  Location:  ${TARGET}"
 echo "  Roles:     ${ROLE_COUNT}"
 echo "  Scenarios: ${SCENARIO_COUNT}"
 echo "================================================"
 echo ""
 echo "Next steps:"
 echo "  1. Restart Claude Code."
-echo "  2. Try: 'PRD 써줘' (invokes pm-writer role)"
+echo "  2. Try: 'Write a PRD for feature X' (invokes pm-writer)"
+echo "     (Skills mirror your language — Korean input gets Korean output.)"
 echo "  3. Update anytime with: cd ${SOURCE} && git pull && ./setup.sh"
 echo ""

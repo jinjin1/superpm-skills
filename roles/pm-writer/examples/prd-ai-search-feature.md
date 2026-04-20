@@ -3,132 +3,147 @@
 > Status: Approved
 > Owner: @jinjin1
 > Last updated: 2026-02-14
-> Decision by: @jinjin1 (솔로 프로젝트), 2026-02-18
+> Decision by: @jinjin1 (solo project), 2026-02-18
 
 ---
 
 ## TL;DR
 
-- SuperPM 홈에 의미 기반 AI 검색 추가 ("PRD 쓸 때 쓸 프롬프트 찾아줘" 같은
-  자연어 쿼리)
-- 처음 방문한 PM이 자기 Job에 맞는 프롬프트를 15초 내 찾는 Job을 해결
-- 2026-03-15까지 베타 승인 요청. 실패 시 v2는 기존 키워드 검색 유지.
+- Add semantic AI search on the SuperPM homepage, accepting natural-language
+  queries like "find a prompt for writing a PRD"
+- Solves the Job of a first-time visiting PM finding the right prompt for
+  their current work in under 15 seconds
+- Requesting beta approval by 2026-03-15. If it fails, v2 keeps the existing
+  keyword search.
 
 ## Job to be Done
 
-**누가**: 처음 SuperPM을 방문한 PM (특히 한국 B2B SaaS PM, 경력 2~5년)
-**언제/어떤 상황에서**: 프롬프트 이름을 모르지만 "지금 하고 있는 일"은 알고 있을 때
-**무엇을 하려 하는가**: 내 현재 작업 ("분기 OKR 쓰는 중") 에 맞는 프롬프트를
-빠르게 찾아 복사하여 ChatGPT/Claude에서 쓰기
-**현재의 workaround**: 카테고리 클릭 → 스크롤 → 제목으로 추측. 평균 3~5분 소요.
-구글로 되돌아가는 비율 30% (GA).
-**왜 지금**: 232개 프롬프트 확장 후 카테고리 탐색의 디스커버리 한계가 명확.
-SEO 검색어 유입이 늘수록 "길 잃는 방문자" 비율 증가.
+**Who:** A PM visiting SuperPM for the first time (B2B SaaS PMs in Korea
+and SEA with 2–5 years of experience are the primary segment)
+**When / in what situation:** They do not know the exact prompt name but know
+what they are working on right now
+**What they are trying to do:** Find a prompt matching their current task
+("I'm writing quarterly OKRs") and copy it quickly into ChatGPT or Claude
+**Current workaround:** Click category → scroll → guess by title. Average 3–5
+minutes. 30% bounce back to Google (per GA).
+**Why now:** After expanding to 232 prompts, category discovery is clearly
+hitting its limit. More SEO traffic means more first-time visitors getting
+lost.
 
-### 증거 (유저 5명 대화 결과)
+### Evidence (from 5 user conversations)
 
-- A씨 (B2B SaaS, 4년차): "'프롬프트 엔지니어링 가이드' 같은 이름을 모르면 못 찾음.
-  차라리 '구글 검색하듯' 하고 싶어요" — 2026-01-22
-- B씨 (이커머스, 3년차): "카테고리가 10개 넘는 순간부터 안 읽게 돼요. 딱 내 상황
-  묘사하고 추천받고 싶음" — 2026-01-24
-- C씨 (핀테크, 5년차): "프롬프트 이름이 영어라 더 어려움. 한국어로 '내가 뭐 하는지'
-  타이핑하면 찾아주는 게 필요" — 2026-01-25
-- D씨: 구글 "prd 프롬프트" → SuperPM 랜딩 → 10초 내 이탈 (세션 녹화) — 2026-01-20
-- E씨: 즐겨찾기만 씀, 새 프롬프트 발견 루트 없음 — 2026-01-28
+- User A (B2B SaaS, 4 yrs): "If I don't know the exact name like 'Prompt
+  Engineering Guide', I can't find it. I'd rather just Google it." —
+  2026-01-22
+- User B (ecommerce, 3 yrs): "Once categories pass 10 items, I stop reading.
+  Let me describe my situation and get a recommendation." — 2026-01-24
+- User C (fintech, 5 yrs): "Prompt names in English make it harder. I want
+  to type what I'm doing in my language and find matches." — 2026-01-25
+- User D: Google "prd prompt" → SuperPM landing → bounced in 10 seconds
+  (session recording) — 2026-01-20
+- User E: Uses only bookmarks. No path for discovering new prompts. —
+  2026-01-28
 
 ## Success Metrics
 
-**North Star**: 신규 방문자(Day 0) 15초 내 첫 프롬프트 복사 완료율 — 현재 28% → 목표 45%
+**North Star:** Share of new visitors (Day 0) who copy their first prompt
+within 15 minutes — currently 28% → target 45%
 
-**Guardrails**:
-- 기존 키워드 검색 사용자의 복사 완료율이 5%p 이상 떨어지지 않을 것 (현재 52%)
-- p95 검색 응답 시간 1.5s 이하 유지
-- 검색 API 월간 비용 $200 이하
+**Guardrails:**
+- Copy-completion rate for existing keyword-search users does not drop by
+  more than 5 percentage points (currently 52%)
+- p95 search response time stays ≤ 1.5s
+- Search API monthly cost ≤ $200
 
-**측정 방법**: GA 이벤트 `prompt_copy` + 세션 시작 대비 시간 필터.
-**기준선**: 28% (2026년 1월 4주 평균)
-**목표치**: Day 30 38%, Day 90 45%
+**Measurement:** GA event `prompt_copy` filtered by time from session start.
+**Baseline:** 28% (four-week average, January 2026)
+**Target:** Day 30 at 38%, Day 90 at 45%
 
 ## Scope
 
 ### In scope (v1)
-- [x] 홈 히어로에 AI 검색 바 노출 ("어떤 일을 하는 중이세요?" placeholder)
-- [x] 자연어 쿼리 → 프롬프트 상위 5개 추천 (임베딩 검색, Voyage AI)
-- [x] 추천 카드에 "이 프롬프트가 어울리는 이유" 1줄 요약
-- [x] 기존 키워드 검색은 유지 (토글 불필요, 병행 표시)
+- [x] AI search bar in the home hero ("What are you working on?" placeholder)
+- [x] Natural-language query → top 5 prompt recommendations (embedding search,
+      Voyage AI)
+- [x] One-line "why this fits" under each result card
+- [x] Keep existing keyword search in parallel (no toggle; both shown)
 
 ### NOT in scope
 
-- 다국어 지원 (영어 쿼리) — v1은 한국어 전용. KR 유저 80% 우선.
-- 개인화 추천 — 로그인 없는 현재 UX 유지.
-- AI Chat 인터페이스 — 복잡도 폭발. 검색 먼저 검증.
-- 프롬프트 자동 실행 — 복사까지만, 실행은 유저가 ChatGPT/Claude에서.
+- Multi-language query support — v1 is primarily Korean and English. 80% of
+  current traffic fits.
+- Personalized recommendations — no login in current UX.
+- AI chat interface — scope explosion risk. Search first.
+- Auto-running prompts — copy only. Execution stays in ChatGPT / Claude.
 
-## User Flow
+## User flow
 
 ```
-[홈 방문] → [검색바 포커스] → [자연어 입력] → [Enter 또는 2s debounce]
+[home visit] → [focus search] → [type query] → [Enter or 2s debounce]
                                                       ↓
-                              [상위 5개 카드 + 이유 요약]
+                              [top 5 cards + "why this fits"]
                                                       ↓
-                              [카드 클릭] → [프롬프트 상세]
+                              [click card] → [prompt detail]
                                                       ↓
-                              [복사] → 성공
+                              [copy] → success
 ```
 
-**엣지 케이스**:
-- 쿼리 < 3자: "조금 더 구체적으로 알려주세요" 힌트
-- 결과 0개: "비슷한 카테고리 보기" CTA + 피드백 버튼
-- API 실패: 키워드 검색으로 fallback, 배너로 안내
+**Edge cases:**
+- Query under 3 characters: hint "try a more specific description"
+- Zero results: "see similar categories" CTA + feedback button
+- API failure: fall back to keyword search, banner to notify
 
-## 요구사항
+## Functional requirements
 
-1. 검색 API 응답 시간 p95 < 1.5s
-2. 임베딩 인덱스는 새 프롬프트 추가 시 1시간 내 업데이트
-3. 쿼리 로그 저장 (검색 품질 개선용, PII 없음)
-4. 기존 `/api/prompts?search=` 유지, 신규 `/api/search` 추가
+1. Search API p95 response time < 1.5s
+2. Embedding index refreshes within 1 hour of a new prompt being added
+3. Query logs saved for search-quality improvement (no PII)
+4. Keep existing `/api/prompts?search=`, add new `/api/search`
 
-## 비기능 요구사항
+## Non-functional requirements
 
-- **성능**: API p95 1.5s 이하
-- **접근성**: 키보드 내비게이션 지원, 스크린리더 호환
-- **지원 환경**: 모바일·데스크탑 동일 UX, PC/Mac Chrome/Safari/Firefox 최신 2버전
-- **보안/프라이버시**: 쿼리 로그에서 IP/UA 제거, 쿼리 텍스트만 저장
+- **Performance:** API p95 ≤ 1.5s
+- **Accessibility:** keyboard navigation, screen reader compatible
+- **Supported environments:** mobile + desktop parity; Chrome / Safari /
+  Firefox latest two versions
+- **Security / privacy:** strip IP and UA from query logs; store query text only
 
 ## Dependencies
 
-- Voyage AI API 계정 (임베딩) — 기존 사용 중
-- Vercel edge 함수 (검색 엔드포인트)
-- Prisma 마이그레이션 (embedding 컬럼 추가)
+- Voyage AI account (embeddings) — already in use
+- Vercel edge functions (search endpoint)
+- Prisma migration (add embedding column)
 
 ## Timeline
 
-| 마일스톤 | 기한 | 담당 |
+| Milestone | Deadline | Owner |
 |---|---|---|
 | Eng kickoff | 2026-02-20 | @jinjin1 |
-| Alpha (내부) | 2026-03-01 | @jinjin1 |
-| Beta (5% 유저) | 2026-03-15 | @jinjin1 |
+| Alpha (internal) | 2026-03-01 | @jinjin1 |
+| Beta (5% users) | 2026-03-15 | @jinjin1 |
 | GA | 2026-03-29 | @jinjin1 |
 
-## Open Questions
+## Open questions
 
-- Voyage AI 비용이 예산 초과 시 대안? (OpenAI embeddings? on-device?) — 2026-02-25 결정
-- 한국어 외 쿼리 폴백 처리? — Alpha 종료 후 결정
+- If Voyage AI exceeds budget, what is the fallback? (OpenAI embeddings?
+  on-device?) — decide by 2026-02-25
+- Handling queries in languages other than KR / EN — decide after Alpha
 
-## Decision Log
+## Decision log
 
-| 날짜 | 결정 | 누가 | 왜 |
+| Date | Decision | Who | Why |
 |---|---|---|---|
-| 2026-02-14 | 임베딩 모델 Voyage AI | @jinjin1 | 한국어 성능 + 가격 |
-| 2026-02-14 | 기존 키워드 검색 유지 | @jinjin1 | Guardrail 보호, fallback |
+| 2026-02-14 | Use Voyage AI embeddings | @jinjin1 | Korean performance and price |
+| 2026-02-14 | Keep existing keyword search in parallel | @jinjin1 | Guardrail protection, fallback |
 
 ## References
 
-- 유저 인터뷰 원본 (5명): [Notion 링크]
-- GA 현재 검색 사용 데이터: [대시보드 링크]
-- 경쟁사 분석 (Perplexity 검색 UX): [메모]
+- Raw user interview notes (5 people): [Notion link]
+- Current search-usage data in GA: [dashboard link]
+- Competitor analysis (Perplexity search UX): [memo]
 
 ---
 
-**Reviewer notes**: 이 PRD는 TL;DR 3줄에 JTBD, 지표, 요청이 전부 들어있어
-2분 내 결정 가능. 유저 인용 5개로 근거 탄탄. NOT in scope가 스코프 보호.
+**Reviewer notes:** TL;DR of three lines carries JTBD, metric, and request,
+so a decision is possible in two minutes. Five user quotes give the PRD
+strong evidence. A NOT-in-scope section protects the scope from drift.

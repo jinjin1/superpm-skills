@@ -1,95 +1,97 @@
-# PRD — {기능/제품 이름}
+# PRD — {feature / product name}
 
 > Status: {Draft | In Review | Approved | Shipped}
-> Owner: {@담당자}
+> Owner: {@owner}
 > Last updated: {YYYY-MM-DD}
-> Decision by: {의사결정자 이름/역할}, {기한}
+> Decision by: {decision-maker name / role}, {deadline}
 
 ---
 
 ## TL;DR
 
-- {한 줄: 무엇을 만들 것인가}
-- {한 줄: 누구의 어떤 Job을 해결하는가}
-- {한 줄: 결정 요청 — 승인 여부 + 기한}
+- {one line: what are we building}
+- {one line: whose Job does it solve}
+- {one line: the decision requested — approval and deadline}
 
 ## Job to be Done
 
-**누가**: {타겟 유저 페르소나 1~2개}
-**언제/어떤 상황에서**: {발생 맥락}
-**무엇을 하려 하는가**: {Job 동사 + 목적어}
-**현재의 workaround**: {지금은 어떻게 해결 중인가 — 없으면 "없음 (= 포기/이탈)"}
-**왜 지금**: {타이밍 근거 — 시장·경쟁·내부 준비 중 1~2개}
+**Who:** {target user persona — one or two}
+**When / in what situation:** {triggering context}
+**What they are trying to do:** {Job verb + object}
+**Current workaround:** {how they solve this today — if none, say "none (= give up / churn)"}
+**Why now:** {timing rationale — market, competition, internal readiness}
 
-### 증거 (유저 5명 대화 결과)
+### Evidence (from 5 user conversations)
 
-> 근거 없는 PRD는 거부. pm-researcher에게 JTBD 합성 먼저.
+> A PRD without evidence gets bounced. Invoke `pm-researcher` first for JTBD
+> synthesis if missing.
 
-- {인용 1: 어떤 유저, 어떤 말, 날짜}
-- {인용 2}
-- {인용 3}
-- ...최소 3개, 이상적으로 5개
+- {quote 1: which user, what they said, date}
+- {quote 2}
+- {quote 3}
+- ...at least 3, ideally 5
 
 ## Success Metrics
 
-**North Star**: {사용자 Job 완료 지표 1개 — 프록시 금지}
-- 예: "신규 PM이 방문 15분 내 첫 프롬프트 복사 완료율"
-- 안티 예: "DAU" · "페이지뷰" · "체류 시간"
+**North Star:** {one Job-completion metric — no proxies}
+- Example: "Share of new PMs who copy their first prompt within 15 minutes of landing"
+- Anti-example: "DAU" · "pageviews" · "session duration"
 
-**Guardrails**: {망가뜨리면 안 되는 것 2~3개}
-- {기존 지표 X가 Y% 이상 떨어지지 않을 것}
-- {Z 지표가 유지되거나 개선될 것}
+**Guardrails:** {two or three things we must not break}
+- {existing metric X does not drop by more than Y%}
+- {metric Z holds or improves}
 
-**측정 방법**: {대시보드 위치 · 이벤트 이름 · 코호트 정의}
-**기준선 (baseline)**: {현재 값}
-**목표치**: {Day 30 / Day 90 각각}
+**Measurement:** {dashboard location · event name · cohort definition}
+**Baseline:** {current value}
+**Target:** {Day 30 / Day 90}
 
 ## Scope
 
 ### In scope (v1)
-- [ ] {기능 구성품 1}
-- [ ] {기능 구성품 2}
-- [ ] {기능 구성품 3}
+- [ ] {component 1}
+- [ ] {component 2}
+- [ ] {component 3}
 
-### NOT in scope (명시적 제외)
+### NOT in scope (explicit exclusions)
 
-> 제외 이유를 각 1줄 작성. 이 섹션이 없으면 스코프 싸움 확정.
+> One-line reason per item. Missing this section = scope fight guaranteed.
 
-- {제외 항목 A} — {이유}
-- {제외 항목 B} — {이유}
-- {제외 항목 C} — {이유}
+- {excluded item A} — {reason}
+- {excluded item B} — {reason}
+- {excluded item C} — {reason}
 
-## User Flow
+## User flow
 
 ```
-[진입점] → [스텝 1] → [스텝 2] → [성공 상태]
-                ↓
-            [에러/엣지 케이스]
+[entry] → [step 1] → [step 2] → [success state]
+              ↓
+         [error / edge case]
 ```
 
-핵심 플로우 1개 + 주요 엣지 케이스 2~3개. 장황한 문장보다 ASCII 다이어그램.
+One primary flow + two or three key edge cases. ASCII diagrams beat long
+prose.
 
-## 요구사항 (Functional)
+## Functional requirements
 
-1. {요구사항 1 — 행동 가능한 문장으로}
-2. {요구사항 2}
+1. {requirement 1, written as a behavior}
+2. {requirement 2}
 3. ...
 
-## 비기능 요구사항
+## Non-functional requirements
 
-- **성능**: {p95 응답 시간 등}
-- **접근성**: {WCAG 기준 · 모바일 대응}
-- **지원 환경**: {브라우저 · 디바이스}
-- **보안/프라이버시**: {데이터 취급 · 로그}
+- **Performance:** {e.g., p95 response time}
+- **Accessibility:** {WCAG level, mobile behavior}
+- **Supported environments:** {browsers, devices}
+- **Security / privacy:** {data handling, logging}
 
 ## Dependencies
 
-- {의존하는 팀/시스템 1}
-- {의존하는 팀/시스템 2}
+- {dependent team / system 1}
+- {dependent team / system 2}
 
 ## Timeline
 
-| 마일스톤 | 기한 | 담당 |
+| Milestone | Deadline | Owner |
 |---|---|---|
 | Design review | YYYY-MM-DD | @designer |
 | Eng kickoff | YYYY-MM-DD | @engineer |
@@ -97,33 +99,33 @@
 | Beta (5% users) | YYYY-MM-DD | @engineer |
 | GA | YYYY-MM-DD | @engineer |
 
-## Open Questions
+## Open questions
 
-- {미결정 이슈 1 — 누가 언제까지 결정할지}
-- {미결정 이슈 2}
+- {open issue 1 — owner and deadline for the decision}
+- {open issue 2}
 
-## Decision Log
+## Decision log
 
-| 날짜 | 결정 | 누가 | 왜 |
+| Date | Decision | Who | Why |
 |---|---|---|---|
-| YYYY-MM-DD | {결정 내용} | {사람} | {근거} |
+| YYYY-MM-DD | {decision} | {person} | {rationale} |
 
 ## References
 
-- 원본 유저 리서치: {링크}
-- 경쟁사 분석: {링크}
-- 관련 PRD: {링크}
-- Figma / 프로토타입: {링크}
+- Original user research: {link}
+- Competitor analysis: {link}
+- Related PRDs: {link}
+- Figma / prototype: {link}
 
 ---
 
-## Review checklist (제출 전 자체 체크)
+## Self-review checklist (before submission)
 
-- [ ] TL;DR 3줄로 의사결정 가능한가?
-- [ ] JTBD가 한 문장으로 명확한가?
-- [ ] 유저 인용 3개 이상 있는가?
-- [ ] Success metric이 프록시 지표가 아닌가?
-- [ ] NOT in scope 섹션 있는가?
-- [ ] 모든 action item에 담당자+기한 있는가?
-- [ ] Guardrail 메트릭 정의되었는가?
-- [ ] 의사결정자와 기한 명시되었는가?
+- [ ] Can the TL;DR alone support a decision?
+- [ ] Is the JTBD stated as one clear sentence?
+- [ ] Are there at least 3 user quotes in Evidence?
+- [ ] Is the success metric free of proxies?
+- [ ] Is there a NOT-in-scope section?
+- [ ] Does every action item have an owner and a deadline?
+- [ ] Are guardrail metrics defined?
+- [ ] Are decision-maker and deadline named?

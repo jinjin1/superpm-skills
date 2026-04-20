@@ -1,70 +1,77 @@
-# 가격 정책 변경 — 1-Pager
+# Pricing Change — 1-Pager
 
-> To: @ceo (가상의 투자자/공동창업자 시나리오용 예시)
+> To: @ceo (hypothetical cofounder / investor scenario for this example)
 > From: @jinjin1
 > Date: 2026-03-20
 > Decision needed by: 2026-03-27
 
-**요청**: B2B 팀 플랜 가격을 월 $29/사용자 → $39/사용자로 올리는 방향 승인.
-기존 고객은 6개월 그랜드파더링.
+**Ask:** Approve raising the B2B team plan from $29/user/month to
+$39/user/month, with 6-month grandfathering for existing customers.
 
 ## TL;DR
 
-- 가격을 $29 → $39 (+34%)로 인상, 기존 고객 6개월 유예
-- 세일즈 인터뷰 12건 중 10건이 "현재가는 저평가" 응답, WTP median $45
-- 3/27까지 승인 시 4/15 공지, 5/1부터 신규 계약에 적용
+- Raise price from $29 to $39 (+34%), grandfather existing customers for 6 months
+- 10 of 12 sales interviews said current price is undervalued; median WTP is $45
+- Approve by 3/27 → announce 4/15 → apply to new contracts from 5/1
 
-## 왜 이게 중요한가
+## Why this matters
 
-CEO 상반기 OKR "B2B ARR $1M" 달성에 필요한 객단가 $350/월/팀 미달 (현재 평균
-$230). 가격 인상 + 그랜드파더링이 churn 리스크 최소화하면서 가장 빠른 경로.
+The CEO's H1 OKR "B2B ARR $1M" depends on hitting $350/team/month ARPU. We're
+at $230. A price raise + grandfathering is the fastest path with the lowest
+churn risk.
 
-B2B 고객의 의사결정자 (CTO/CPO)는 "이 툴이 팀당 월 $39에 값하는가" 질문에
-"넉넉히 그렇다"는 답 (인터뷰 10/12). 의사결정자 의제: 팀 생산성 측정 가능성 ↑.
+The decision-makers at our B2B customers (CTO / CPO) consistently answered
+"yes, comfortably" when asked if this tool is worth $39/user/month (10/12
+interviews). Their agenda: measurable team productivity. That's exactly what
+we raise visibility on in Q1.
 
-## 배경
+## Background
 
-현재 $29/사용자는 런치 시점(2025-08) 가격. 그간 기능 50% 증가 (PRD 자동화,
-AI 검색, Skill 에이전트 통합), 경쟁 제품 평균 $45. 가격 정체 상태에서 유닛
-이코노믹스 악화 중.
+Current $29/user is the launch price (2025-08). Since then: features grew
+50% (PRD automation, AI search, Skill agents). Competitor average: $45.
+Unit economics are eroding at the current flat price.
 
-## 옵션 비교
+## Options compared
 
-| 옵션 | 요약 | 효과 | 비용/리스크 | 타임라인 |
+| Option | Summary | Impact | Cost / risk | Timeline |
 |---|---|---|---|---|
-| **A (추천)** | $29→$39, 6개월 그랜드파더링 | ARR +$180K (Y1 추정) | Churn +3~5% 위험 | 5/1 적용 |
-| B | $29→$49, 즉시 적용 | ARR +$280K | Churn +10~15%, 반발 큼 | 5/1 적용 |
-| C | 유지 | 현상 | 유닛 이코노믹스 개선 지연 | — |
+| **A (recommended)** | $29→$39, 6-month grandfathering | ARR +$180K (Y1 est.) | Churn +3–5% risk | Apply 5/1 |
+| B | $29→$49, apply immediately | ARR +$280K | Churn +10–15%, heavy backlash | Apply 5/1 |
+| C | Hold | Status quo | Unit economics worsen | — |
 
-## 추천 (Option A)
+## Recommendation (Option A)
 
-A가 이기는 이유: (1) WTP 데이터가 $45까지 허용하므로 $39는 안전 영역.
-(2) 6개월 유예는 기존 고객 신뢰 유지, 구두 홍보 리스크 완화. (3) +34% 인상
-폭이 "점진적 정상화"로 설명 가능 — CEO도 "공격적 아님" 메시지 유지.
+A wins because: (1) WTP data tolerates up to $45, so $39 sits in safe range.
+(2) 6-month grandfathering preserves existing-customer trust and reduces
+negative word of mouth. (3) A +34% increase reads as "gradual normalization",
+not aggressive — consistent with the CEO's preferred narrative.
 
-반대 의견: "6개월 유예가 너무 길다, 3개월이면 충분" — 3개월은 고객 분기
-예산 사이클과 충돌. 6개월이 1회 분기 커버.
+Counter-argument considered: "6 months is too long, 3 months is enough". But
+3 months collides with customer quarterly budget cycles. 6 months covers a
+full quarter.
 
-## 리스크 & 완화
+## Risks and mitigations
 
-- **리스크 1**: Top 10 고객 중 2~3곳 이탈 가능성 → **완화**: 3/20~3/27 개별 1:1
-  공지 + 18개월 $29 락인 옵션 제공 (상위 10곳만)
-- **리스크 2**: 공지 후 SNS 부정 반응 → **완화**: 가격 인상 근거 블로그 포스트
-  (기능 증가, 인프라 비용 투명 공개) + 세일즈 FAQ 사전 작성
+- **Risk 1:** 2–3 of our top 10 customers might churn → **mitigation:**
+  one-on-one calls 3/20–3/27 + offer 18-month $29 lock-in (top 10 only)
+- **Risk 2:** Negative social media reaction after announcement →
+  **mitigation:** blog post explaining the rationale (feature growth,
+  transparent infrastructure cost) + sales FAQ prepped in advance
 
-## 다음 스텝
+## Next steps
 
-| 액션 | 담당 | 기한 |
+| Action | Owner | Deadline |
 |---|---|---|
-| 승인 결정 | @ceo | 2026-03-27 |
-| Top 10 고객 1:1 공지 | @jinjin1 | 2026-04-01 |
-| 블로그 포스트 드래프트 | @jinjin1 (pm-writer) | 2026-04-05 |
-| 전체 고객 공지 이메일 | @jinjin1 (pm-communicator) | 2026-04-15 |
-| 과금 시스템 업데이트 | @eng | 2026-04-25 |
-| 신규 계약 적용 시작 | @sales | 2026-05-01 |
+| Approve decision | @ceo | 2026-03-27 |
+| Top 10 customer 1:1 calls | @jinjin1 | 2026-04-01 |
+| Blog post draft | @jinjin1 (pm-writer) | 2026-04-05 |
+| All-customer announcement email | @jinjin1 (pm-communicator) | 2026-04-15 |
+| Billing system update | @eng | 2026-04-25 |
+| Apply to new contracts | @sales | 2026-05-01 |
 
 ---
 
-**Reviewer notes**: 1페이지 엄수. 숫자 7개 이상 배치로 "주장"이 아닌 "데이터"로
-읽힘. 의사결정자 의제 (ARR $1M OKR) 첫 섹션에 연결. 옵션 3개 + 추천 이유 +
-반대 의견까지 포함으로 "충분히 검토했음" 신호.
+**Reviewer notes:** Strict one page. Seven-plus numbers make the doc read as
+data rather than opinion. Connects to the decision-maker's agenda (ARR $1M
+OKR) in the first non-TL;DR section. Three options + recommendation + the
+counter-argument signal thorough consideration.
