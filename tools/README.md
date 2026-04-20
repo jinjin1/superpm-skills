@@ -12,10 +12,12 @@ For the taxonomy, see [`../ARCHITECTURE.md`](../ARCHITECTURE.md).
 
 | Tool | Status | Purpose |
 |---|---|---|
-| `pm-browse` | planned | Inspect external sites — competitor pages, App Store reviews, Reddit, industry reports, docs |
-| `pm-notes` | planned | Capture raw interview / meeting notes and synthesize into themes + representative quotes |
-| `pm-metrics-lookup` | planned | Ask 2-3 questions about the problem, suggest the right metric and where it lives |
-| `pm-archive-search` | planned | Find relevant past PRDs, decisions, retros in the user's project repo |
+| `pm-browse` | ✅ shipped | Inspect external sites — competitor pages, App Store reviews, Reddit, industry reports, docs |
+| `pm-notes` | ✅ shipped | Capture raw interview / meeting notes and synthesize into themes + representative quotes |
+| `pm-metrics-lookup` | ✅ shipped | Ask 2-3 questions about the problem, suggest the right metric and where it lives |
+| `pm-archive-search` | ✅ shipped | Find relevant past PRDs, decisions, retros in the user's project repo |
+
+All 4 Tools are now complete as of 2026-04-20.
 
 ## When to call a Tool
 

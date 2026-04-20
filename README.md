@@ -132,11 +132,17 @@ git pull
 
 ## Status
 
-- Phase 0 (in progress): `pm-writer` role shipped as the exemplar. Other
-  layers scaffolded with per-layer READMEs.
-- Phase 1 (next): remaining 7 Roles.
-- Phase 2+: Scenarios, Tools, Lifecycle, Modes, Adversarial, Meta,
-  Orchestration layers filled in over successive phases.
+| Phase | Layer(s) | Status |
+|---|---|---|
+| 0 | Bootstrap + pm-writer exemplar | ✅ 2026-04-20 |
+| 1 | Roles (8) | ✅ 2026-04-20 |
+| 1b | References + examples for all Roles | ✅ 2026-04-20 |
+| 2 | Scenarios (9) | ✅ 2026-04-20 |
+| 3 | Tools + Lifecycle + Modes (12) | ✅ 2026-04-20 |
+| 4 | Adversarial + Meta + Orchestration (7) | planned |
+
+Total shipped: 29 skills across 5 layers. Remaining: 6 skills across
+3 layers.
 
 ## License
 
