@@ -1,14 +1,19 @@
 # SuperPM Skills
 
-**Your virtual PM team of 8** — a role-based Skills collection for Claude Code.
+**A multi-layer Skills toolkit for PMs** — installable into Claude Code.
 
-From writing PRDs to handling crises, the work of a single PM spans too many
-roles. SuperPM Skills splits that work into 8 specialist roles you can invoke
-by name, plus 8 scenario sessions that orchestrate multiple roles for specific
-situations ("launch week", "growth pause", "crisis mode").
+PM work spans too many modes to collapse into a flat list of prompts.
+SuperPM Skills organizes that work across **eight layers**: Roles (who),
+Scenarios (when), Tools (utility), Lifecycle (phase), Modes (constraint),
+Adversarial (challenge), Meta (memory), Orchestration (full-run). Around
+**30 skills** in total, composable.
 
-Language: the base content is English, but every skill mirrors your language.
-Type in Korean, get Korean. Type in English, get English.
+See [`ARCHITECTURE.md`](./ARCHITECTURE.md) for the full design. Below is the
+quick tour.
+
+Language: every skill file in this repo is written in English. At runtime,
+skills mirror the language you type in. Write to a skill in any language and
+it answers you in that language.
 
 ## Requirements
 
@@ -32,46 +37,82 @@ Draft a postmortem from this incident log
 Turn this into an executive 1-pager
 ```
 
-Korean works too:
-
-```
-PRD 써줘
-포스트모템 정리해줘
-임원용 1-pager로 만들어줘
-```
+Other languages work the same way: write to a skill in your language and it
+responds in kind.
 
 ## What's inside
 
-### 8 Roles (your virtual PM teammates)
+### 8 Roles (who the agent is)
 
-| Role | Identity | Covers |
-|---|---|---|
-| `pm-writer` | The writer | PRD · 1-pager · RFC · launch notes · postmortem · decision memo |
-| `pm-strategist` | The strategist | Market/competitive analysis · OKRs · quarterly strategy · pivot calls |
-| `pm-researcher` | The researcher | Interview design · JTBD · synthesis · personas |
-| `pm-analyst` | The analyst | Funnels · retention · cohorts · experiment design |
-| `pm-critic` | The challenger | Premise challenge · scope cuts · risk map |
-| `pm-communicator` | The communicator | Exec updates · stakeholder alignment · customer escalations |
-| `pm-operator` | The operator | Launch · crisis response · incident retros |
-| `pm-coach` | The coach | PM interview prep · career · skill diagnosis |
+| Role | Covers |
+|---|---|
+| `pm-strategist` | Market, competitive, positioning, OKRs, pivot calls |
+| `pm-researcher` | Interview design, JTBD, synthesis, personas |
+| `pm-analyst` | Funnels, retention, cohorts, experiment design |
+| `pm-writer` | PRD, 1-pager, RFC, launch notes, postmortem |
+| `pm-critic` | Premise challenge, scope cuts, risk map |
+| `pm-communicator` | Exec updates, stakeholder alignment, customer messages |
+| `pm-operator` | Launch, crisis response, incident retros |
+| `pm-coach` | PM interview prep, career, skill diagnosis |
 
-### 8 Scenarios (situational sessions)
+### 8 Scenarios (the situation you are in)
 
-Orchestrate multiple roles in sequence for a specific situation.
+- `launch-week` — strategist → writer → communicator → operator
+- `discovery-sprint` — researcher → strategist → analyst
+- `growth-pause` — analyst → researcher → strategist
+- `quarterly-cycle` — strategist → analyst → communicator
+- `crisis-mode` — operator → communicator → critic
+- `interview-season` — coach → writer → critic
+- `new-role-onboarding` — writer → communicator → strategist
+- `board-prep` — strategist → analyst → writer → communicator
 
-- `launch-week` — Launch week runbook (strategist · writer · communicator · operator)
-- `discovery-sprint` — One-week discovery (researcher · strategist · analyst)
-- `growth-pause` — Growth stall diagnostic (analyst · researcher · strategist)
-- `quarterly-cycle` — Quarter-end / quarter-start ritual (strategist · analyst · communicator)
-- `crisis-mode` — Incident / PR crisis response (operator · communicator · critic)
-- `interview-season` — Job hunt week (coach · writer · critic)
-- `new-role-onboarding` — First 30 days as PM (writer · communicator · strategist)
-- `board-prep` — Board meeting prep (strategist · analyst · writer · communicator)
+### 4 Tools (utilities used across roles)
+
+- `pm-browse` — inspect external sites (competitor pages, App Store reviews, industry reports)
+- `pm-notes` — capture raw interview notes and synthesize into themes
+- `pm-metrics-lookup` — find the right metric for a given problem
+- `pm-archive-search` — surface relevant past PRDs, decisions, retros
+
+### 4 Lifecycle Rituals (project-phase skills)
+
+- `pm-kickoff` — Day 1: stakeholder map, success metrics, timeline, RACI
+- `pm-checkpoint` — mid-project: state dump of shipped / remaining / blocked / learned
+- `pm-retro` — end of sprint or project
+- `pm-handoff` — transfer PM work to another PM
+
+### 4 Modes (session-wide behavior constraints)
+
+- `kr-pm-mode` — Korean PM context (language, KST, quarterly OKRs, B2B conventions)
+- `exec-mode` — every response in exec 1-pager format
+- `focus-mode` — execute only, no scope debate
+- `discovery-mode` — challenge every assumption first
+
+### 3 Adversarial (second-opinion / challenge)
+
+- `pm-red-team` — steelman the opposing view
+- `pm-ruthless-cut` — scope reduction, default "cut"
+- `pm-second-opinion` — external PM cold review
+
+### 3 Meta (memory and quality)
+
+- `pm-decision-log` — capture ADR-style decision records
+- `pm-learn` — persist learnings about the team / product
+- `pm-health` — audit PM practice quality
+
+### 1 Orchestration
+
+- `pm-autorun` — for a proposal, run strategist → researcher → analyst → writer → critic sequentially with approval checkpoints (gstack's `/autoplan` for PMs)
 
 ## Philosophy
 
 [`ETHOS.md`](./ETHOS.md) holds the shared values every skill inherits.
-Read it once; every role applies it.
+
+## Architecture
+
+See [`ARCHITECTURE.md`](./ARCHITECTURE.md) for:
+- What each layer is and when to use it
+- How layers compose (full worked examples)
+- Design principles (why Modes are separate from Roles, etc.)
 
 ## Update
 
@@ -82,19 +123,19 @@ git pull
 
 (Or re-run `./setup.sh` if you want to reinstall.)
 
-## Architecture
+## Repos
 
-This repo is the **content source** for SuperPM skills. It is deliberately
-separate from the SuperPM web app repo so that:
-
-- Users install skills directly from this repo (no web app dependency)
-- The web app renders skill docs on `/roles/[slug]` and `/scenarios/[slug]`
-  by including this repo as a git submodule
-
-Repos:
 - Skills (this one): https://github.com/jinjin1/superpm-skills
 - Web app: https://github.com/jinjin1/prompt
-- Strategy doc: [`docs/designs/pm-harness-v1.md`](https://github.com/jinjin1/prompt/blob/main/docs/designs/pm-harness-v1.md) (in web app repo)
+- Strategy doc: [`docs/designs/pm-harness-v1.md`](https://github.com/jinjin1/prompt/blob/main/docs/designs/pm-harness-v1.md) (in the web app repo)
+
+## Status
+
+- Phase 0 (in progress): `pm-writer` role shipped as the exemplar. Other
+  layers scaffolded with per-layer READMEs.
+- Phase 1 (next): remaining 7 Roles.
+- Phase 2+: Scenarios, Tools, Lifecycle, Modes, Adversarial, Meta,
+  Orchestration layers filled in over successive phases.
 
 ## License
 
